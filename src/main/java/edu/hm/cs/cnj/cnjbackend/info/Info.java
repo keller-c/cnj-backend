@@ -1,6 +1,7 @@
 package edu.hm.cs.cnj.cnjbackend.info;
 
 public class Info {
+
     String message;
 
     public Info() {
