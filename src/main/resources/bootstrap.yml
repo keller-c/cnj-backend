@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: hm-keller-cnj
+---
+spring:
+  profiles: dev, cloud
+  cloud:
+    config:
+     uri: https://hm-keller-config-server.cfapps.io
