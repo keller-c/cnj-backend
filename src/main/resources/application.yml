@@ -3,3 +3,7 @@ server:
 cnj:
     info:
         message: AppProperties ok!
+spring:
+    h2:
+        console:
+            enabled: true
