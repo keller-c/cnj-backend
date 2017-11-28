@@ -12,12 +12,15 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 public class Veranstaltung {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -38,14 +41,10 @@ public class Veranstaltung {
     @OneToMany(mappedBy = "veranstaltung", cascade = CascadeType.ALL)
     private Set<Teilnahme> einladungen = new HashSet<>();
 
-    public Set<Teilnahme> getEinladungen() {
-        return einladungen;
+    public Veranstaltung() {
+        // JPA benoetigt Default-Konstruktor
     }
 
-    public void add(Teilnahme teilnahme) {
-        einladungen.add(teilnahme);
-        teilnahme.setVeranstaltung(this);
-    }
 
     public Veranstaltung(String titel, String beschreibung, Date beginn) {
         super();
@@ -54,11 +53,53 @@ public class Veranstaltung {
         this.beginn = beginn;
     }
 
-    public Veranstaltung() {
-        // JPA benoetigt Default-Konstruktor
+    public void add(Teilnahme teilnahme) {
+        einladungen.add(teilnahme);
+        teilnahme.setVeranstaltung(this);
+    }
+
+    public Date getBeginn() {
+        return beginn;
+    }
+
+    public String getBeschreibung() {
+        return beschreibung;
     }
 
     public Long getId() {
         return id;
     }
+
+    public Collection<Teilnahme> getTeilnahmen() {
+        return Collections.unmodifiableCollection(einladungen);
+    }
+
+    public String getTitel() {
+        return titel;
+    }
+
+
+    public void setBeginn(Date beginn) {
+        this.beginn = beginn;
+    }
+
+
+    public void setBeschreibung(String beschreibung) {
+        this.beschreibung = beschreibung;
+    }
+
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+
+    public void setTitel(String titel) {
+        this.titel = titel;
+    }
+
+    public Set<Teilnahme> getEinladungen() {
+        return einladungen;
+    }
 }
+
