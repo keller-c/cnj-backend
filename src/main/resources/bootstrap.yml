@@ -1,9 +1,13 @@
 spring:
   application:
     name: hm-keller-cnj
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: https://hm-katz-service-registry.cfapps.io/eureka/
 ---
 spring:
   profiles: dev, cloud
   cloud:
     config:
-     uri: https://hm-keller-config-server.cfapps.io
+      uri: https://hm-katz-config-server.cfapps.io
