@@ -14,49 +14,49 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 public class Teilnahme {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
+		
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	Long id;
+		
+	@Column(length=255)
+	@NotNull
+	private String name;
+	
+	@Min(0)
+	@Max(20)
+	private int begleiter;
+	
+	@Enumerated(EnumType.STRING)
+	private TeilnahmeStatus status = TeilnahmeStatus.OFFEN;
+	
+	@ManyToOne
+	@NotNull
+	private Veranstaltung veranstaltung;
+	
+	void setVeranstaltung(Veranstaltung veranstaltung) {
+		this.veranstaltung = veranstaltung;
+	}
+	
+	public Teilnahme() {
+		// Default-Konstruktor fuer JPA
+	}
 
-    @Column(length = 255)
-    @NotNull
-    private String name;
+	public Teilnahme(String name, int begleiter) {
+		this.name = name;
+		this.begleiter = begleiter;
+	}
+	
+	public Long getId() {
+		return id;
+	}
 
-    @Min(0)
-    @Max(20)
-    private int begleiter;
+	public TeilnahmeStatus getStatus() {
+		return status;
+	}
 
-    @Enumerated(EnumType.STRING)
-    private TeilnahmeStatus status = TeilnahmeStatus.OFFEN;
-
-    @ManyToOne
-    @NotNull
-    private Veranstaltung veranstaltung;
-
-
-    public Teilnahme() {
-        // Default-Konstruktor fuer JPA
-    }
-
-    public Teilnahme(String name, int begleiter) {
-        this.name = name;
-        this.begleiter = begleiter;
-    }
-
-    void setVeranstaltung(Veranstaltung veranstaltung) {
-        this.veranstaltung = veranstaltung;
-    }
-
-    public TeilnahmeStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(TeilnahmeStatus status) {
-        this.status = status;
-    }
-
-    public Long getId() {
-        return id;
-    }
+	public void setStatus(TeilnahmeStatus absage) {
+		status = absage;		
+	}	
 }
 

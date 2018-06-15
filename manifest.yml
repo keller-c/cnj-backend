@@ -3,3 +3,9 @@ applications:
   path: target/cnj-backend-0.0.1-SNAPSHOT.jar
   instances: 1
   memory: 800M
+  services:
+    - hmkeller-redis
+    - hmkeller-rabbit
+
+    
+    

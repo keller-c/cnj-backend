@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel("Server-Info")
 public class Info {
+
     @ApiModelProperty(example = "Allet super!", readOnly = true)
     private String message;
 

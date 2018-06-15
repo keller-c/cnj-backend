@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <div><img width=\"300\" src=\"assets/header.png\">\r\n  </div>\r\n  <!-- Liste der Veranstaltungen -->\r\n  <div class=\"col-md-10\">\r\n    <div class=\"panel panel-default\">\r\n      <div class=\"panel-heading\">\r\n        <h3>Veranstaltungen</h3>\r\n      </div>\r\n      <div class=\"panel-body\">\r\n        <button (click)=\"toggleList()\">\r\n          <span *ngIf=\"!allEvents\">Vergangene Events auch anzeigen</span>\r\n          <span *ngIf=\"allEvents\">Vergangene Events ausblenden</span>\r\n        </button>\r\n        <table class=\"table table-bordered\" *ngIf=\"events!=null\">\r\n          <tr class=\"active\">\r\n            <th>Titel</th>\r\n            <th>Beschreibung</th>\r\n            <th>Beginn</th>\r\n            <th></th>\r\n          </tr>\r\n          <tr *ngFor=\"let event of events\">\r\n            <td>{{event.titel}}</td>\r\n            <td>{{event.beschreibung}}</td>\r\n            <td>{{event.beginn | date:'yyyy-MM-dd'}}</td>\r\n            <td><button (click)=\"load(event.id)\">Ändern</button><button (click)=\"delete(event.id)\">Löschen</button></td>\r\n          </tr>\r\n        </table>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n<div class=\"container\">\r\n  <div class=\"col-md-10\">\r\n    <div class=\"panel panel-default\">\r\n      <div class=\"panel-heading\">\r\n        <h3>Veranstaltung\r\n          <span *ngIf=\"event.id==null\">anlegen</span>\r\n          <span *ngIf=\"event.id!=null\">ändern</span>\r\n        </h3>\r\n      </div>\r\n\r\n      <div class=\"panel-body\">\r\n        <form>\r\n          <label for=\"titel\">Titel:</label>\r\n          <input name=\"titel\" type=\"text\" placeholder=\"Titel\" [(ngModel)]=\"event.titel\" class=\"form-control\" />\r\n          <label for=\"beschreibung\">Beschreibung:</label>\r\n          <input name=\"beschreibung\" type=\"text\" placeholder=\"Beschreibung\" [(ngModel)]=\"event.beschreibung\" ng-required=\"true\" class=\"form-control\"\r\n          />\r\n          <label for=\"beginn\">Datum:</label>\r\n          <input [ngModel]=\"event.beginn | date:'yyyy-MM-dd'\" (ngModelChange)=\"event.beginn = $event\" type=\"date\" name=\"beginn\" class=\"form-control\"\r\n          />\r\n        </form>\r\n        <button (click)=\"createEvent()\" class=\"btn btn-primary\" *ngIf=\"event.id==null\">Sichern</button>\r\n        <button (click)=\"updateEvent()\" class=\"btn btn-primary\" *ngIf=\"event.id!=null\">Sichern</button>\r\n        <button (click)=\"reset()\" class=\"btn btn-primary\">Zurücksetzen</button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"container\">\r\n  <div class=\"col-md-10\">\r\n    <div class=\"panel panel-default\">\r\n      <div class=\"panel-heading\">\r\n        <h3>Servernachricht</h3>\r\n      </div>\r\n      <div class=\"panel-body\">\r\n        <span *ngIf=\"info!=null && !error\">{{info.message}}</span>\r\n        <span *ngIf=\"info!=null && error\">konnte Backend nicht erreichen!</span>\r\n        <span *ngIf=\"info==null\">Lade...</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"container\">\r\n<div><h1>{{ad}}</h1></div>\r\n  <div><img width=\"300\" src=\"assets/header.png\">\r\n  </div>\r\n  <!-- Liste der Veranstaltungen -->\r\n  <div class=\"col-md-10\">\r\n    <div class=\"panel panel-default\">\r\n      <div class=\"panel-heading\">\r\n        <h3>Veranstaltungen</h3>\r\n      </div>\r\n      <div class=\"panel-body\">\r\n        <button (click)=\"toggleList()\">\r\n          <span *ngIf=\"!allEvents\">Vergangene Events auch anzeigen</span>\r\n          <span *ngIf=\"allEvents\">Vergangene Events ausblenden</span>\r\n        </button>\r\n        <table class=\"table table-bordered\" *ngIf=\"events!=null\">\r\n          <tr class=\"active\">\r\n            <th>Titel</th>\r\n            <th>Beschreibung</th>\r\n            <th>Beginn</th>\r\n            <th></th>\r\n          </tr>\r\n          <tr *ngFor=\"let event of events\">\r\n            <td>{{event.titel}}</td>\r\n            <td>{{event.beschreibung}}</td>\r\n            <td>{{event.beginn | date:'yyyy-MM-dd'}}</td>\r\n            <td><button (click)=\"load(event.id)\">Ändern</button><button (click)=\"delete(event.id)\">Löschen</button></td>\r\n          </tr>\r\n        </table>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n<div class=\"container\">\r\n  <div class=\"col-md-10\">\r\n    <div class=\"panel panel-default\">\r\n      <div class=\"panel-heading\">\r\n        <h3>Veranstaltung\r\n          <span *ngIf=\"event.id==null\">anlegen</span>\r\n          <span *ngIf=\"event.id!=null\">ändern</span>\r\n        </h3>\r\n      </div>\r\n\r\n      <div class=\"panel-body\">\r\n        <form>\r\n          <label for=\"titel\">Titel:</label>\r\n          <input name=\"titel\" type=\"text\" placeholder=\"Titel\" [(ngModel)]=\"event.titel\" class=\"form-control\" />\r\n          <label for=\"beschreibung\">Beschreibung:</label>\r\n          <input name=\"beschreibung\" type=\"text\" placeholder=\"Beschreibung\" [(ngModel)]=\"event.beschreibung\" ng-required=\"true\" class=\"form-control\"\r\n          />\r\n          <label for=\"beginn\">Datum:</label>\r\n          <input [ngModel]=\"event.beginn | date:'yyyy-MM-dd'\" (ngModelChange)=\"event.beginn = $event\" type=\"date\" name=\"beginn\" class=\"form-control\"\r\n          />\r\n        </form>\r\n        <button (click)=\"createEvent()\" class=\"btn btn-primary\" *ngIf=\"event.id==null\">Sichern</button>\r\n        <button (click)=\"updateEvent()\" class=\"btn btn-primary\" *ngIf=\"event.id!=null\">Sichern</button>\r\n        <button (click)=\"reset()\" class=\"btn btn-primary\">Zurücksetzen</button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"container\">\r\n  <div class=\"col-md-10\">\r\n    <div class=\"panel panel-default\">\r\n      <div class=\"panel-heading\">\r\n        <h3>Servernachricht</h3>\r\n      </div>\r\n      <div class=\"panel-body\">\r\n        <span *ngIf=\"info!=null && !error\">{{info.message}}</span>\r\n        <span *ngIf=\"info!=null && error\">konnte Backend nicht erreichen!</span>\r\n        <span *ngIf=\"info==null\">Lade...</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -48,9 +48,12 @@ module.exports = "<div class=\"container\">\r\n  <div><img width=\"300\" src=\"a
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__veranstaltung__ = __webpack_require__("../../../../../src/app/veranstaltung.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -63,21 +66,91 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var AppComponent = (function () {
     function AppComponent(http) {
         this.http = http;
-        this.message = null;
+        this.info = null;
+        this.ad = "Lade Werbung...";
+        this.allEvents = false;
         this.error = false;
+        this.sub = null;
+        this.events = null;
+        this.event = new __WEBPACK_IMPORTED_MODULE_4__veranstaltung__["a" /* Veranstaltung */]();
     }
+    AppComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.checkInfo();
+        this.loadEvents();
+        this.loadAd();
+        this.sub = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["Observable"].interval(5000).subscribe(function (x) {
+            _this.loadAd();
+        });
+    };
+    AppComponent.prototype.ngOnDestroy = function () {
+        this.sub.unsubscribe();
+    };
     AppComponent.prototype.checkInfo = function () {
         var _this = this;
         this.http.get('/v1/info').map(function (response) { return response.json(); }).subscribe(function (info) {
-            _this.message = info.message;
+            _this.info = info;
             _this.error = false;
         }, function (error) {
             _this.error = true;
-            _this.message = 'ERROR';
         });
+    };
+    AppComponent.prototype.loadAd = function () {
+        var _this = this;
+        this.http.get('/v1/adproxy').map(function (response) { return response.text(); }).subscribe(function (ad) {
+            _this.ad = ad;
+        }, function (error) {
+            _this.ad = "(Konnte Werbung nicht laden)";
+        });
+    };
+    AppComponent.prototype.loadEvents = function () {
+        var _this = this;
+        this.http.get('/v1/veranstaltungen?allEvents=' + this.allEvents).map(function (response) { return response.json(); }).subscribe(function (veranstaltungen) {
+            _this.events = veranstaltungen;
+        });
+    };
+    AppComponent.prototype.load = function (id) {
+        var _this = this;
+        this.http.get('/v1/veranstaltungen/' + id).map(function (response) { return response.json(); }).subscribe(function (veranstaltung) {
+            _this.event = veranstaltung;
+        });
+    };
+    AppComponent.prototype.delete = function (id) {
+        var _this = this;
+        this.http.delete('/v1/veranstaltungen/' + id).subscribe(function (response) {
+            _this.loadEvents();
+            _this.event = new __WEBPACK_IMPORTED_MODULE_4__veranstaltung__["a" /* Veranstaltung */]();
+        });
+    };
+    AppComponent.prototype.createEvent = function () {
+        var _this = this;
+        this.http.post('/v1/veranstaltungen', this.event).subscribe(function (veranstaltungen) {
+            _this.loadEvents();
+            _this.event = new __WEBPACK_IMPORTED_MODULE_4__veranstaltung__["a" /* Veranstaltung */]();
+        }, function (error) {
+            window.alert(error);
+        });
+    };
+    AppComponent.prototype.updateEvent = function () {
+        var _this = this;
+        this.http.put('/v1/veranstaltungen/' + this.event.id, this.event).subscribe(function (veranstaltungen) {
+            _this.loadEvents();
+            _this.event = new __WEBPACK_IMPORTED_MODULE_4__veranstaltung__["a" /* Veranstaltung */]();
+        }, function (error) {
+            window.alert(error);
+        });
+    };
+    AppComponent.prototype.reset = function () {
+        this.event = new __WEBPACK_IMPORTED_MODULE_4__veranstaltung__["a" /* Veranstaltung */]();
+    };
+    AppComponent.prototype.toggleList = function () {
+        this.allEvents = !this.allEvents;
+        this.loadEvents();
     };
     return AppComponent;
 }());
@@ -87,7 +160,7 @@ AppComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/app.component.html"),
         styles: [__webpack_require__("../../../../../src/app/app.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Http */]) === "function" && _a || Object])
 ], AppComponent);
 
 var _a;
@@ -137,6 +210,21 @@ AppModule = __decorate([
 ], AppModule);
 
 //# sourceMappingURL=app.module.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/veranstaltung.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Veranstaltung; });
+var Veranstaltung = (function () {
+    function Veranstaltung() {
+    }
+    return Veranstaltung;
+}());
+
+//# sourceMappingURL=veranstaltung.js.map
 
 /***/ }),
 
