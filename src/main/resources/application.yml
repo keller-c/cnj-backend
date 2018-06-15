@@ -7,15 +7,15 @@ spring:
 cnj:
   info:
     message: Server verwendet Konfiguration aus Codebase!
-security:
-  basic:
-    enabled: false
-  oauth2:
-    client:
-      client-id: 5fdfe26598c0cd2006ed
-      client-secret: 9fc5e74812315ef9906da51c18bb305f8d2ec128
-      access-token-uri: https://github.com/login/oauth/access_token
-      user-authorization-uri: https://github.com/login/oauth/authorize
-      client-authentication-scheme: form
-    resource:
-      user-info-uri: https://api.github.com/user
+#security:
+#  basic:
+#    enabled: false
+#  oauth2:
+#    client:
+#      client-id: 5fdfe26598c0cd2006ed
+#      client-secret: 9fc5e74812315ef9906da51c18bb305f8d2ec128
+#      access-token-uri: https://github.com/login/oauth/access_token
+#      user-authorization-uri: https://github.com/login/oauth/authorize
+#      client-authentication-scheme: form
+#    resource:
+#      user-info-uri: https://api.github.com/user
